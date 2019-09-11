@@ -14,6 +14,7 @@ class CategoryProductTable extends Migration
     public function up()
     {
         Schema::create('category_product', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('product_id')->unsigned();
             $table->timestamps();

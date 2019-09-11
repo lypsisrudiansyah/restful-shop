@@ -51,4 +51,4 @@ Route::resource('transactions', 'Transaction\TransactionController', ['only' => 
 /*
 	Routing for Users
 */
-Route::resource('users', 'User\UserController', ['only' => ['create', 'edit']]);
+Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
