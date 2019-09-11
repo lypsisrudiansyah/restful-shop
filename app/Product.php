@@ -12,6 +12,8 @@ class Product extends Model
 	const AVAILABLE_PRODUCT = 'available';
 	const UNAVAILABLE_PRODUCT = 'unavailable';
 
+	protected $table = 'products';
+
 	protected $fillable = [
 		'name',
 		'description',

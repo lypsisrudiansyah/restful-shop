@@ -16,8 +16,8 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('quantity');
-            $table->bigInteger('buyer_id');
-            $table->bigInteger('product_id');
+            $table->bigInteger('buyer_id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('buyer_id')->references('id')->on('users');
