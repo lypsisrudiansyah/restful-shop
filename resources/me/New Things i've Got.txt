@@ -1,0 +1,2 @@
+1.Model can be Extends to another Model(if The Model has no Table on Database and just a Model To Spesific Eloquent Function can get extends to another model which it have table on Database)
+Example: on Seller and Buyer Model , Extended to User Model

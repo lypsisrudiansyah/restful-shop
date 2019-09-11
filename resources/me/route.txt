@@ -1,0 +1,37 @@
++--------+-----------+--------------------------------+--------------------+------------------------------------------------------------------------+-------------------------------------------------+
+| Domain | Method    | URI                            | Name               | Action                                                                 | Middleware                                      |
++--------+-----------+--------------------------------+--------------------+------------------------------------------------------------------------+-------------------------------------------------+
+|        | GET|HEAD  | /                              |                    | Closure                                                                | web                                             |
+|        | POST      | _ignition/execute-solution     |                    | Facade\Ignition\Http\Controllers\ExecuteSolutionController             | Facade\Ignition\Http\Middleware\IgnitionEnabled |
+|        | GET|HEAD  | _ignition/health-check         |                    | Facade\Ignition\Http\Controllers\HealthCheckController                 | Facade\Ignition\Http\Middleware\IgnitionEnabled |
+|        | GET|HEAD  | _ignition/scripts/{script}     |                    | Facade\Ignition\Http\Controllers\ScriptController                      | Facade\Ignition\Http\Middleware\IgnitionEnabled |
+|        | POST      | _ignition/share-report         |                    | Facade\Ignition\Http\Controllers\ShareReportController                 | Facade\Ignition\Http\Middleware\IgnitionEnabled |
+|        | GET|HEAD  | _ignition/styles/{style}       |                    | Facade\Ignition\Http\Controllers\StyleController                       | Facade\Ignition\Http\Middleware\IgnitionEnabled |
+|        | GET|HEAD  | api/beranda                    |                    | Closure                                                                | api                                             |
+|        | GET|HEAD  | api/buyers                     | buyers.index       | App\Http\Controllers\Buyer\BuyerController@index                       | api                                             |
+|        | GET|HEAD  | api/buyers/{buyer}             | buyers.show        | App\Http\Controllers\Buyer\BuyerController@show                        | api                                             |
+|        | GET|HEAD  | api/categories/create          | categories.create  | App\Http\Controllers\Category\CategoryController@create                | api                                             |
+|        | GET|HEAD  | api/categories/{category}/edit | categories.edit    | App\Http\Controllers\Category\CategoryController@edit                  | api                                             |
+|        | GET|HEAD  | api/products                   | products.index     | App\Http\Controllers\Product\ProductController@index                   | api                                             |
+|        | GET|HEAD  | api/products/{product}         | products.show      | App\Http\Controllers\Product\ProductController@show                    | api                                             |
+|        | GET|HEAD  | api/sellers                    | sellers.index      | App\Http\Controllers\Seller\SellerController@index                     | api                                             |
+|        | GET|HEAD  | api/sellers/{seller}           | sellers.show       | App\Http\Controllers\Seller\SellerController@show                      | api                                             |
+|        | GET|HEAD  | api/transactions               | transactions.index | App\Http\Controllers\Transaction\TransactionController@index           | api                                             |
+|        | GET|HEAD  | api/transactions/{transaction} | transactions.show  | App\Http\Controllers\Transaction\TransactionController@show            | api                                             |
+|        | GET|HEAD  | api/user                       |                    | Closure                                                                | api,auth:api                                    |
+|        | GET|HEAD  | api/users                      | users.index        | App\Http\Controllers\User\UserController@index                         | api                                             |
+|        | POST      | api/users                      | users.store        | App\Http\Controllers\User\UserController@store                         | api                                             |
+|        | GET|HEAD  | api/users/{user}               | users.show         | App\Http\Controllers\User\UserController@show                          | api                                             |
+|        | PUT|PATCH | api/users/{user}               | users.update       | App\Http\Controllers\User\UserController@update                        | api                                             |
+|        | DELETE    | api/users/{user}               | users.destroy      | App\Http\Controllers\User\UserController@destroy                       | api                                             |
+|        | GET|HEAD  | home                           | home               | App\Http\Controllers\HomeController@index                              | web,auth                                        |
+|        | GET|HEAD  | login                          | login              | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest                                       |
+|        | POST      | login                          |                    | App\Http\Controllers\Auth\LoginController@login                        | web,guest                                       |
+|        | POST      | logout                         | logout             | App\Http\Controllers\Auth\LoginController@logout                       | web                                             |
+|        | POST      | password/email                 | password.email     | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest                                       |
+|        | GET|HEAD  | password/reset                 | password.request   | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest                                       |
+|        | POST      | password/reset                 | password.update    | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest                                       |
+|        | GET|HEAD  | password/reset/{token}         | password.reset     | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest                                       |
+|        | GET|HEAD  | register                       | register           | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest                                       |
+|        | POST      | register                       |                    | App\Http\Controllers\Auth\RegisterController@register                  | web,guest                                       |
++--------+-----------+--------------------------------+--------------------+------------------------------------------------------------------------+-------------------------------------------------+
