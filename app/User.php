@@ -13,7 +13,6 @@ class User extends Authenticatable
     use SoftDeletes;
     use Notifiable;
     
-    protected $dates =['deleted_at'];
 
     const VERIFIED_USER = '1';
     const UNVERIFIED_USER = '0';
@@ -21,6 +20,7 @@ class User extends Authenticatable
     const ADMIN_USER = 'true';
     const REGULAR_USER = 'false';
 
+    protected $dates =['deleted_at'];
     protected $table = 'users';
 
     /**
@@ -76,6 +76,7 @@ class User extends Authenticatable
     {
         return $this->verified == User::VERIFIED_USER;
     }
+
 
     public function isAdmin()
     {

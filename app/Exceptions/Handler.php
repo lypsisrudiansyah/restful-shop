@@ -70,7 +70,7 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof AuthorizationException) {
-            return $this->errorResponse($exception->getMessages(), 403);
+            return $this->errorResponse($exception->getMessage(), 403);
         }
 
         if ($exception instanceof MethodNotAllowedHttpException) {
@@ -82,7 +82,7 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof HttpException) {
-            return $this->errorResponse($exception->getMessages(), $exception->getStatusCode());
+            return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
         }
 
         if ($exception instanceof QueryException) {
