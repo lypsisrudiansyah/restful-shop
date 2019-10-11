@@ -7,6 +7,7 @@ use App\Product;
 use App\Seller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
@@ -44,7 +45,7 @@ class SellerProductController extends ApiController
         $data = $request->all();
 
         $data['status'] = Product::UNAVAILABLE_PRODUCT;
-        $data['image'] = '1.jpg';
+        $data['image'] = $request->image->store('');
         $data['seller_id'] = $seller->id;
 
         $product = Product::create($data);
@@ -64,7 +65,7 @@ class SellerProductController extends ApiController
         $rules = [
             'quantity' => 'integer|min:1',
             'status' => 'in:'.Product::AVAILABLE_PRODUCT. ',' . Product::UNAVAILABLE_PRODUCT,
-            'image' => 'image', 
+            'image' => 'image|mimes:jpeg,png,jpg|max:5120', 
         ];
 
         $this->validate($request, $rules);
@@ -82,6 +83,12 @@ class SellerProductController extends ApiController
             if ($product->isAvailable() && $product->categories()->count() == 0) {
                 return $this->errorResponse('An active product must have at least one category', 409);
             }
+        }
+
+        if ($request->hasFile('image')) {
+            Storage::delete($product->image);
+
+            $product->image = $request->image->store('');
         }
 
         if ($product->isClean()) {
@@ -104,6 +111,8 @@ class SellerProductController extends ApiController
         $this->checkSeller($seller, $product);
 
         $product->delete();
+
+        // Storage::delete($product->image);
 
         return $this->showOne($product);
     }

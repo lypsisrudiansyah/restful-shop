@@ -1,8 +1,8 @@
-[ADD] Global Scope To Buyer and Seller
+	[ADD] Global Scope To Buyer and Seller
 
 [ADD] SoftDeletes to Migrations And Model
 
 [ADD] Traits ApiResponse
 
 
-next sect 24
+check point sect 27, 9

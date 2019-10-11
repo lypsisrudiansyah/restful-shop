@@ -10,10 +10,8 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
-    use SoftDeletes;
-    use Notifiable;
+    use Notifiable, SoftDeletes;
     
-
     const VERIFIED_USER = '1';
     const UNVERIFIED_USER = '0';
 
@@ -72,11 +70,11 @@ class User extends Authenticatable
         $this->attributes['email'] = strtolower($email);
     }
 
+
     public function isVerified()
     {
         return $this->verified == User::VERIFIED_USER;
     }
-
 
     public function isAdmin()
     {
@@ -87,4 +85,5 @@ class User extends Authenticatable
     {
         return Str::random(40);
     }
+
 }
